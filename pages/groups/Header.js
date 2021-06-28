@@ -41,6 +41,7 @@ const styles = (theme) => ({
   },
 });
 
+
 function Header(props) {
   const { classes, onDrawerToggle } = props;
 
@@ -49,7 +50,7 @@ function Header(props) {
       <AppBar color="primary" position="sticky" elevation={0}>
         <Toolbar>
           <Grid container spacing={1} alignItems="center">
-            <Hidden smUp>
+            <Hidden mdUp>
               <Grid item>
                 <IconButton
                   color="inherit"
@@ -120,7 +121,6 @@ function Header(props) {
       >
         <Tabs value={0} textColor="inherit">
           <Tab textColor="inherit" label="Users" />
-          <Tab textColor="inherit" label="Status" />
           <Tab textColor="inherit" label="Tasks" />
           <Tab textColor="inherit" label="Chat" />
           <Tab textColor="inherit" label="Equip" />
@@ -129,6 +129,7 @@ function Header(props) {
     </React.Fragment>
   );
 }
+
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
