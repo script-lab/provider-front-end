@@ -1,13 +1,12 @@
 import React from 'react';
 import SearchAppBar from './SearchAppBar'
 import Navigator from './Navigator';
-import GridList from './GridList'
 
 import PropTypes from 'prop-types';
 import { createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
 import Hidden from '@material-ui/core/Hidden';
+import Content from '../groups/Content'
 
 
 let theme = createMuiTheme({
@@ -145,10 +144,6 @@ const styles = {
     padding: theme.spacing(6, 4),
     background: '#eaeff1',
   },
-  footer: {
-    padding: theme.spacing(2),
-    background: '#eaeff1',
-  },
 };
 
 
@@ -182,15 +177,8 @@ const AppBody = (props) => {
           <div className={classes.app}>
             <SearchAppBar onDrawerToggle={handleDrawerToggle} />
             <main className={classes.main}>
-              {/* <React.Fragment>
-                <CssBaseline />
-                <Container maxWidth="md"> */}
-                  <GridList/>
-                {/* </Container>
-              </React.Fragment> */}
+              <Content/>
             </main>
-            <footer className={classes.footer}>
-            </footer>
           </div>
         </div>
       </ThemeProvider>
