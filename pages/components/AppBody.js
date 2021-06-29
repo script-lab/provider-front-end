@@ -75,7 +75,7 @@ theme = {
         margin: '0 16px',
         minWidth: 0,
         padding: 0,
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('sm')]: {
           padding: 0,
           minWidth: 0,
         },
@@ -129,7 +129,7 @@ const styles = {
     minHeight: '100vh',
   },
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: drawerWidth,
       flexShrink: 0,
     },
@@ -141,7 +141,7 @@ const styles = {
   },
   main: {
     flex: 1,
-    padding: theme.spacing(6, 4),
+    padding: theme.spacing(3, 3),
     background: '#eaeff1',
   },
 };
@@ -162,7 +162,7 @@ const AppBody = (props) => {
         <div className={classes.root}>
           <CssBaseline />
           <nav className={classes.drawer}>
-            <Hidden smUp implementation="js">
+            <Hidden mdUp implementation="js">
               <Navigator
                 PaperProps={{ style: { width: drawerWidth } }}
                 variant="temporary"
@@ -170,7 +170,7 @@ const AppBody = (props) => {
                 onClose={handleDrawerToggle}
               />
             </Hidden>
-            <Hidden xsDown implementation="css">
+            <Hidden smDown implementation="css">
               <Navigator PaperProps={{ style: { width: drawerWidth } }} />
             </Hidden>
           </nav>
