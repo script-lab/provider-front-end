@@ -3,24 +3,10 @@ import PropTypes from 'prop-types';
 import { createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Hidden from '@material-ui/core/Hidden';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import Navigator from '../components/Navigator';
-import Content from './Content';
 import Header from './Header';
+import FullFeaturedGrid from '../users';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Provider
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 let theme = createMuiTheme({
   palette: {
@@ -88,7 +74,7 @@ theme = {
         margin: '0 16px',
         minWidth: 0,
         padding: 0,
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('sm')]: {
           padding: 0,
           minWidth: 0,
         },
@@ -140,7 +126,7 @@ const styles = {
     minHeight: '100vh',
   },
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: drawerWidth,
       flexShrink: 0,
     },
@@ -152,11 +138,7 @@ const styles = {
   },
   main: {
     flex: 1,
-    padding: theme.spacing(6, 4),
-    background: '#eaeff1',
-  },
-  footer: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3, 3),
     background: '#eaeff1',
   },
 };
@@ -174,7 +156,7 @@ function Paperbase(props) {
       <div className={classes.root}>
         <CssBaseline />
         <nav className={classes.drawer}>
-          <Hidden smUp implementation="js">
+          <Hidden mdUp implementation="js">
             <Navigator
               PaperProps={{ style: { width: drawerWidth } }}
               variant="temporary"
@@ -182,18 +164,15 @@ function Paperbase(props) {
               onClose={handleDrawerToggle}
             />
           </Hidden>
-          <Hidden xsDown implementation="css">
+          <Hidden smDown implementation="css">
             <Navigator PaperProps={{ style: { width: drawerWidth } }} />
           </Hidden>
         </nav>
         <div className={classes.app}>
           <Header onDrawerToggle={handleDrawerToggle} />
           <main className={classes.main}>
-            <Content />
+            <FullFeaturedGrid/>
           </main>
-          <footer className={classes.footer}>
-            <Copyright />
-          </footer>
         </div>
       </div>
     </ThemeProvider>

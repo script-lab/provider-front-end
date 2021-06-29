@@ -199,10 +199,10 @@ function SearchAppBar(props) {
     <React.Fragment>
       <CssBaseline />
       <HideOnScroll {...props}>
-        <div className={classes.grow}>
+        <div>
           <AppBar position="static" className={classes.AppBar}>
             <Toolbar>
-              <Hidden smUp>
+              <Hidden mdUp>
                 <IconButton
                   edge="start"
                   onClick={onDrawerToggle}
