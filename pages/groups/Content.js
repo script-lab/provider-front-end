@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -12,6 +11,8 @@ import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import GroupCard from './GroupCard';
+
 
 const styles = (theme) => ({
   paper: {
@@ -36,6 +37,7 @@ const styles = (theme) => ({
   },
 });
 
+
 function Content(props) {
   const { classes } = props;
 
@@ -50,7 +52,7 @@ function Content(props) {
             <Grid item xs>
               <TextField
                 fullWidth
-                placeholder="Search by user name or email address"
+                placeholder="Search by group name"
                 InputProps={{
                   disableUnderline: true,
                   className: classes.searchInput,
@@ -59,7 +61,7 @@ function Content(props) {
             </Grid>
             <Grid item>
               <Button variant="contained" color="primary" className={classes.addUser}>
-                Add user
+                Add group
               </Button>
               <Tooltip title="Reload">
                 <IconButton>
@@ -71,13 +73,12 @@ function Content(props) {
         </Toolbar>
       </AppBar>
       <div className={classes.contentWrapper}>
-        <Typography color="textSecondary" align="center">
-          No users for this project yet
-        </Typography>
+        <GroupCard/>
       </div>
     </Paper>
   );
 }
+
 
 Content.propTypes = {
   classes: PropTypes.object.isRequired,

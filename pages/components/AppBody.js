@@ -1,13 +1,12 @@
 import React from 'react';
 import SearchAppBar from './SearchAppBar'
 import Navigator from './Navigator';
-import GridList from './GridList'
 
 import PropTypes from 'prop-types';
 import { createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
 import Hidden from '@material-ui/core/Hidden';
+import Content from '../groups/Content'
 
 
 let theme = createMuiTheme({
@@ -76,7 +75,7 @@ theme = {
         margin: '0 16px',
         minWidth: 0,
         padding: 0,
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('sm')]: {
           padding: 0,
           minWidth: 0,
         },
@@ -130,7 +129,7 @@ const styles = {
     minHeight: '100vh',
   },
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: drawerWidth,
       flexShrink: 0,
     },
@@ -142,11 +141,7 @@ const styles = {
   },
   main: {
     flex: 1,
-    padding: theme.spacing(6, 4),
-    background: '#eaeff1',
-  },
-  footer: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3, 3),
     background: '#eaeff1',
   },
 };
@@ -167,7 +162,7 @@ const AppBody = (props) => {
         <div className={classes.root}>
           <CssBaseline />
           <nav className={classes.drawer}>
-            <Hidden smUp implementation="js">
+            <Hidden mdUp implementation="js">
               <Navigator
                 PaperProps={{ style: { width: drawerWidth } }}
                 variant="temporary"
@@ -175,22 +170,15 @@ const AppBody = (props) => {
                 onClose={handleDrawerToggle}
               />
             </Hidden>
-            <Hidden xsDown implementation="css">
+            <Hidden smDown implementation="css">
               <Navigator PaperProps={{ style: { width: drawerWidth } }} />
             </Hidden>
           </nav>
           <div className={classes.app}>
             <SearchAppBar onDrawerToggle={handleDrawerToggle} />
             <main className={classes.main}>
-              {/* <React.Fragment>
-                <CssBaseline />
-                <Container maxWidth="md"> */}
-                  <GridList/>
-                {/* </Container>
-              </React.Fragment> */}
+              <Content/>
             </main>
-            <footer className={classes.footer}>
-            </footer>
           </div>
         </div>
       </ThemeProvider>

@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
+import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import EditIcon from '@material-ui/icons/Edit';
@@ -26,6 +27,9 @@ import MenuList from '@material-ui/core/MenuList';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+  },
+  header: {
+    padding: "8px",
   },
   media: {
     height: 0,
@@ -47,10 +51,16 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     marginRight: theme.spacing(2),
   },
+  action: {
+    padding: '0 8px 8px 8px'
+  },
+  content: {
+    padding: '8px',
+  },
 }));
 
 
-export default function GroupCard() {
+const GroupCard = () => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -95,6 +105,11 @@ export default function GroupCard() {
   return (
     <Card className={classes.root}>
       <CardHeader
+        avatar={
+          <Avatar aria-label="recipe" className={classes.avatar}>
+            R
+          </Avatar>
+        }
         action={
           <div className={classes.popper}>
             <div>
@@ -128,21 +143,25 @@ export default function GroupCard() {
             </div>
           </div>
         }
+        className={classes.header}
         title="Sample Event !"
         subheader="September 15, 2021"
       />
+
       <CardMedia
         className={classes.media}
         image="https://mynavi-agent.jp/it/geekroid/323_main.jpg"
-        title="Paella dish"
+        title="group image"
       />
-      <CardContent>
+
+      <CardContent className={classes.content}>
         <Typography variant="body2" color="textSecondary" component="p">
           これは個別のグループを表すカードです。
           material-ui で実装されています。
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+
+      <CardActions disableSpacing className={classes.action}>
         <IconButton aria-label="Edit">
           <EditIcon />
         </IconButton>
@@ -160,17 +179,18 @@ export default function GroupCard() {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
+
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Memo:</Typography>
-          <Typography paragraph>
+        <CardContent className={classes.content}>
+          <Typography paragraph variant="body2">Memo:</Typography>
+          <div variant="body2">
             ここにはグループ（イベント）のメモ、または情報が入ります
-          </Typography>
-          <Typography paragraph>
-            これは React で実装されています
-          </Typography>
+          </div>
         </CardContent>
       </Collapse>
     </Card>
   );
 }
+
+
+export default GroupCard
